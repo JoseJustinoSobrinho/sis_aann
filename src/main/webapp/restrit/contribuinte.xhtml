@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro contribuinte</title>
+    </h:head> 
+    <h:body> 
+        <p:fieldset legend="CADASTRAR CONTRIBUINTES">
+            <h:form id="cadastro">
+                <p:panelGrid >                     
+                    <p:outputLabel for="nome" value="Nome:" />
+                    <p:inputText id="nome" value="#{contribuinteBean.contribuinte.nome}" style="width:660px"  />
+                    
+                    <p:outputLabel for="sexo" value="  Sexo: " />
+                    <p:selectOneMenu id="sexo" value="#{contribuinteBean.contribuinte.sexo}" effect="fold" style="width:135px" converter="sexoConverter" >
+                    <f:selectItem itemLabel="escolha o sexo" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.sexos}" var="sexo" itemLabel="#{sexo.nome}" itemValue="#{sexo}" />
+                    </p:selectOneMenu>
+                    <p:outputLabel for="grupo" value="  Grupo: " />
+                    <p:selectOneMenu id="grupo" value="#{contribuinteBean.contribuinte.grupo}" style="width:200px" converter="grupoConverter" >                   
+                    <f:selectItem itemLabel="Selecione um grupo" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.grupos}" var="grupo" itemLabel="#{grupo.nome}" itemValue="#{grupo}" />                                
+                    </p:selectOneMenu>
+                    <br />
+                    <br /> 
+                    <p:outputLabel for="datNasc" value="Data Nascimento: " style="width:393px"/>
+                    <p:calendar id="datNasc" value="#{contribuinteBean.contribuinte.datNasc.time}" locale="pt_BR" navigator="true" pattern="dd/MM/yyyy" />
+                    <p:outputLabel for="cidade" value="   Naturalidade: " />
+                    <p:selectOneMenu id="cidade" value="#{contribuinteBean.contribuinte.codNatural}"  style="width:285px" converter="cidadeConverter">                      
+                    <f:selectItem itemLabel=""  itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade}" />                                
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="rg" value="  RG nº: " />
+                    <p:inputText id="rg" value="#{contribuinteBean.contribuinte.rg}" style="width:120px"  />
+                     <p:outputLabel for="expedidor" value="   Expedidor: " />
+                     <p:selectOneMenu id="expedidor" value="#{contribuinteBean.contribuinte.codExpedidor}"  style="width:100px" converter="expedidorConverter">                      
+                    <f:selectItem itemLabel="Selecione um órgão"  itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.expedidores}" var="expedidor" itemLabel="#{expedidor.expedicao}" itemValue="#{expedidor}" />                                
+                    </p:selectOneMenu>
+                    <br />
+                    <br /> 
+                    <p:outputLabel for="cpf" value="CPF nº:" />
+                    <p:inputMask id="cpf" value="#{contribuinteBean.contribuinte.cpf}" mask="999.999.999-99"  style="width:160px"  />                    
+                    <p:outputLabel for="sus" value="  Sus nº: " />
+                    <p:inputMask id="sus" value="#{contribuinteBean.contribuinte.cartaoSus}" mask="999 9999 9999 9999" style="width:175px" />                                                      
+                    <p:outputLabel for="profissao" value="  Profissão: " />
+                    <p:selectOneMenu id="profissao" value="#{contribuinteBean.contribuinte.codProfissaoPrinc}" style="width:280px" converter="profissaoConverter">                      
+                    <f:selectItem itemLabel="Selecione uma profissão" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.profissoes}" var="profissao" itemLabel="#{profissao.profissao}" itemValue="#{profissao}" />                                
+                    </p:selectOneMenu>
+                    <p:outputLabel for="escolaridade" value="  Escolaridade: " />
+                    <p:selectOneMenu id="escolaridade" value="#{contribuinteBean.contribuinte.escolaridade}" style="width:215px" converter="escolaridadeConverter">                      
+                    <f:selectItem itemLabel="Selecione um item" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.escolaridades}" var="escolaridade" itemLabel="#{escolaridade.escolaridade}" itemValue="#{escolaridade}" />                                
+                    </p:selectOneMenu>
+                    <br />
+                    <br />  
+                    <p:outputLabel for="estadoCivil" value="  Estado civil: " />
+                    <p:selectOneMenu id="estadoCivil" value="#{contribuinteBean.contribuinte.codEstadoCivil}"  style="width:120px" converter="estadoCivilConverter">                      
+                    <f:selectItem itemLabel="Selecione um item" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.estadoCivis}" var="estadoCivil" itemLabel="#{estadoCivil.nome}" itemValue="#{estadoCivil}" />                                
+                    </p:selectOneMenu>
+                    <p:outputLabel for="conjuge" value="  Conjuge: " />
+                    <p:inputText id="conjuge" value="#{contribuinteBean.contribuinte.conjuge}"  style="width:640px"  />
+                    <p:outputLabel for="titulo" value="  Titulo: " />
+                    <p:inputMask id="titulo" value="#{contribuinteBean.contribuinte.titulo}" mask="9999 9999 9999" style="width:200px" />                                      
+                    <br /> 
+                    <br />
+                    <p:outputLabel for="zona" value="Zona: " />
+                    <p:inputText id="zona" value="#{contribuinteBean.contribuinte.zona}" style="width:46px" /> 
+                    <p:outputLabel for="secao" value="  Seção: " />
+                    <p:inputText id="secao" value="#{contribuinteBean.contribuinte.secao}" style="width:60px" /> 
+                    <p:outputLabel for="locVotacao" value="  Local: " /> 
+                    <p:selectOneMenu id="locVotacao" value="#{contribuinteBean.contribuinte.locVotacao}"  style="width:930px" converter="locVotacaoConverter">                      
+                    <f:selectItem itemLabel="Selecione um item" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.locVotacoes}" var="locVotacao" itemLabel="#{locVotacao.nome}" itemValue="#{locVotacao}" />                                
+                    </p:selectOneMenu>
+                    <br /> 
+                    <br />
+                    <p:outputLabel for="mae" value="Mãe: " />
+                    <p:inputText id="mae" value="#{contribuinteBean.contribuinte.mae}" style="width:600px" />   
+                    <p:outputLabel for="pai" value="  Pai: " />
+                    <p:inputText id="pai" value="#{contribuinteBean.contribuinte.pai}" style="width:565px" />                                                                             
+                    <br />
+                    <br /> 
+                    <p:outputLabel for="fixo" value="Fixo:" />
+                    <p:inputMask id="fixo" value="#{contribuinteBean.contribuinte.fixo}" mask="9999-9999" style="width:114px" />                    
+                    <p:outputLabel for="oi" value="  Oi:" />
+                    <p:inputMask id="oi" value="#{contribuinteBean.contribuinte.oi}" mask="99999-9999" style="width:126px" />
+                    <p:outputLabel for="tim" value="  Tim:" />
+                    <p:inputMask id="tim" value="#{contribuinteBean.contribuinte.tim}" mask="99999-9999" style="width:126px" />
+                    <p:outputLabel for="claro" value="  Claro:" />
+                    <p:inputMask id="claro" value="#{contribuinteBean.contribuinte.claro}" mask="99999-9999" style="width:126px" />
+                    <p:outputLabel for="vivo" value="  Vivo:" />
+                    <p:inputMask id="vivo" value="#{contribuinteBean.contribuinte.vivo}" mask="99999-9999" style="width: 126px" />
+                    <p:outputLabel for="outroTele" value="  Outro:" />
+                    <p:inputMask id="outroTele" value="#{contribuinteBean.contribuinte.outroTele}" mask="99999-9999" style="width:126px" />
+                     <p:outputLabel for="watts" value="  Watts:" />
+                     <p:inputMask id="watts" value="#{contribuinteBean.contribuinte.watts}"  mask="99999-9999" style="width:126px" />                   
+                    <br /> 
+                    <br />  
+                    <p:outputLabel for="email" value="Email: " />
+                    <p:inputText id="email" value="#{contribuinteBean.contribuinte.email}" style="width:393px" />                                                                                 
+                    <p:outputLabel for="categoria" value=" Categoria: " />
+                    <p:selectOneMenu id="categoria" value="#{contribuinteBean.contribuinte.categoria}" style="width:55px" converter="categoriaConverter">                      
+                    <f:selectItem itemLabel="Selecione uma categoria" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.categorias}" var="categoria" itemLabel="#{categoria.categoria}" itemValue="#{categoria}" />                                
+                    </p:selectOneMenu>                    
+                    <p:outputLabel for="mensageiro" value="  Mensageiro: " />
+                    <p:selectOneMenu id="mensageiro" value="#{contribuinteBean.contribuinte.mensageiro}"  style="width:189px" converter="mensageiroConverter">                      
+                    <f:selectItem itemLabel="Selecione um mensageiro" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.mensageiros}" var="mensageiro" itemLabel="#{mensageiro.mensageiro}" itemValue="#{mensageiro}" />                                
+                    </p:selectOneMenu>
+                    <p:outputLabel for="dataMensageiro" value="  Data: " />
+                    <p:selectOneMenu id="dataMensageiro" value="#{contribuinteBean.contribuinte.dataMensageiro}" style="width:40px" converter="dataMensageiroConverter">                      
+                    <f:selectItem itemLabel="Selecione uma data" itemDisabled="true" />
+                    <f:selectItems value="#{contribuinteBean.dataMensageiros}" var="dataMensageiro" itemLabel="#{dataMensageiro.datas}" itemValue="#{dataMensageiro}" />                                
+                    </p:selectOneMenu>   
+                    <p:outputLabel for="turno" value="  Turno : " />
+                    <p:selectOneMenu id="turno" value="#{contribuinteBean.contribuinte.turno}" style="width:37px" converter="turnoConverter">
+                    <f:selectItem itemLabel="Selecione um turno" itemDisabled="true"  />
+                    <f:selectItems value="#{contribuinteBean.turnos}" var="turno" itemLabel="#{turno.turno}"  itemValue="#{turno}" />
+                    </p:selectOneMenu>  
+                    <br />               
+                    <hr />   
+                     <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/buscaCep.cfm" target ="_blank">
+                         Abrir Correios </a>                     
+                      
+                    <br />
+                    <br />                 
+                    <p:commandButton id="btn_reset" value="Limpar" type="reset"/>
+                    <p:commandButton value="Salvar" action="#{contribuinteBean.salvar}" process="@form" update="@form" /> 
+                </p:panelGrid>
+               
+            </h:form>
+         
+        </p:fieldset>
+        
+    </h:body>
+</html>

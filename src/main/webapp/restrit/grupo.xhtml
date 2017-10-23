@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastrar Grupo</title>
+    </h:head> 
+    <h:body> 
+        <p:fieldset legend="CADASTRAR GRUPO">
+            <h:form id="cadastro">                        
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="nome" value="Nome do grupo" />
+                    <p:inputText id="nome" size="60" value="#{grupoBean.grupo.nome}" placeholder="Informe o nome do grupo" />
+                  
+                    <p:commandButton id="btn_reset" value="Limpar" type="reset"/>
+                    <p:commandButton value="Salvar" action="#{grupoBean.salvar}" process="@form" update="@form" /> 
+                </h:panelGrid>       
+            
+               
+            </h:form>
+         
+        </p:fieldset>
+        
+    </h:body>
+</html>
